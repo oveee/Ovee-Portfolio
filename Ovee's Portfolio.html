@@ -1,0 +1,2845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ovee jawdekar · portfolio</title>
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="apple-touch-icon" href="favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Architects+Daughter&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --wall: #F0E6D0;
+    --wall-dark: #E4D7BB;
+    --paper: #FBF5E6;
+    --paper-ruled: #F7EED8;
+    --ink: #2A2015;
+    --ink-soft: #5F4A30;
+    --red: #D94B3A;
+    --pink: #EE97AC;
+    --pink-light: #F9C9D6;
+    --yellow: #FCE17A;
+    --yellow-tape: #EFC94A;
+    --blue: #B4D2E7;
+    --blue-deep: #4A6FA5;
+    --green: #A8C29A;
+    --magenta: #C75D8C;
+    --rule-line: #6FA0D1;
+    --margin-line: #D9655A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--wall);
+    color: var(--ink);
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    line-height: 1.55;
+    overflow-x: hidden;
+    min-height: 100vh;
+    /* Crumpled paper: warm base + scattered crease highlights and shadows */
+    background-image:
+      /* soft warm glow top-left */
+      radial-gradient(ellipse at top left, rgba(255, 240, 210, 0.55), transparent 55%),
+      /* darker corner bottom-right */
+      radial-gradient(ellipse at bottom right, rgba(150, 120, 80, 0.22), transparent 70%),
+      /* crease highlights — small bright spots scattered like raised paper folds */
+      radial-gradient(ellipse 280px 90px at 18% 22%, rgba(255, 250, 230, 0.35), transparent 70%),
+      radial-gradient(ellipse 220px 70px at 72% 38%, rgba(255, 250, 230, 0.3), transparent 70%),
+      radial-gradient(ellipse 320px 110px at 38% 68%, rgba(255, 250, 230, 0.3), transparent 70%),
+      radial-gradient(ellipse 240px 80px at 85% 78%, rgba(255, 250, 230, 0.3), transparent 70%),
+      /* crease shadows — recessed dark spots */
+      radial-gradient(ellipse 200px 60px at 42% 28%, rgba(120, 95, 60, 0.18), transparent 70%),
+      radial-gradient(ellipse 260px 80px at 12% 58%, rgba(120, 95, 60, 0.15), transparent 70%),
+      radial-gradient(ellipse 220px 70px at 78% 18%, rgba(120, 95, 60, 0.14), transparent 70%),
+      radial-gradient(ellipse 280px 100px at 58% 88%, rgba(120, 95, 60, 0.18), transparent 70%);
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    /* Pencil emoji cursor */
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text y='26' font-size='26'>%E2%9C%8F%EF%B8%8F</text></svg>") 4 28, auto;
+  }
+  a, button, .pin, .hobby, .project-card, .fact-card, .cert-badge, .job-poster, .sticky-status, .contact-pill, .tagline-note, .polaroid-hero, .mini-polaroid, .socials a {
+    /* Pencil emoji cursor for clickable elements */
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text y='26' font-size='26'>%E2%9C%8F%EF%B8%8F</text></svg>") 4 28, pointer;
+  }
+
+  /* Crumpled paper texture overlay — coarser, more visible creases */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.42;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='420'><filter id='crumple'><feTurbulence type='fractalNoise' baseFrequency='0.012 0.035' numOctaves='3' stitchTiles='stitch' seed='7'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.28  0 0 0 0 0.18  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23crumple)'/></svg>");
+    background-size: 420px 420px;
+    mix-blend-mode: multiply;
+  }
+  /* Fine grain layer on top of the creases */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.28;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='grain'><feTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.25  0 0 0 0 0.15  0 0 0 0.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23grain)'/></svg>");
+    mix-blend-mode: multiply;
+  }
+
+  /* ===== DECORATIVE ELEMENTS ===== */
+
+  /* Washi tape */
+  .tape {
+    position: absolute;
+    height: 30px;
+    background-image:
+      repeating-linear-gradient(45deg, transparent 0 6px, rgba(255,255,255,0.25) 6px 12px),
+      linear-gradient(180deg, rgba(255,255,255,0.3), rgba(0,0,0,0.05));
+    background-color: var(--pink);
+    opacity: 0.85;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    z-index: 3;
+    pointer-events: none;
+  }
+  .tape.yellow { background-color: var(--yellow-tape); }
+  .tape.blue { background-color: var(--blue); }
+  .tape.green { background-color: var(--green); }
+  .tape.pink-light { background-color: var(--pink-light); }
+  .tape::before, .tape::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 6px;
+    height: 30px;
+    background: inherit;
+    opacity: 0.7;
+  }
+  .tape::before {
+    left: -3px;
+    clip-path: polygon(0 0, 100% 0, 60% 50%, 100% 100%, 0 100%);
+  }
+  .tape::after {
+    right: -3px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 40% 50%);
+  }
+
+  /* Pushpin */
+  .pin {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle at 30% 30%, #ffaaaa, var(--red) 70%);
+    border-radius: 50%;
+    box-shadow:
+      0 2px 3px rgba(0,0,0,0.3),
+      inset -1px -1px 2px rgba(0,0,0,0.2);
+    z-index: 4;
+    pointer-events: none;
+  }
+  .pin::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    transform: translate(-60%, -60%);
+  }
+  .pin.blue { background: radial-gradient(circle at 30% 30%, #c5e5ff, var(--blue-deep) 70%); }
+  .pin.yellow { background: radial-gradient(circle at 30% 30%, #fff5aa, var(--yellow-tape) 70%); }
+  .pin.large {
+    width: 20px;
+    height: 20px;
+    z-index: 10;
+    box-shadow:
+      0 3px 5px rgba(0,0,0,0.35),
+      inset -1.5px -1.5px 3px rgba(0,0,0,0.25);
+  }
+  .pin.large::after {
+    width: 6px;
+    height: 6px;
+  }
+  .pin.green { background: radial-gradient(circle at 30% 30%, #d6ecc0, var(--green) 70%); }
+
+  /* Fairy lights */
+  .fairy-lights {
+    position: absolute;
+    top: 60px;
+    left: -5%;
+    right: -5%;
+    height: 160px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .fairy-lights svg { width: 100%; height: 100%; overflow: visible; }
+  @keyframes twinkle {
+    0%, 100% { opacity: 1; filter: drop-shadow(0 0 10px currentColor) drop-shadow(0 0 18px currentColor); }
+    50% { opacity: 0.75; filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 12px currentColor); }
+  }
+  .light {
+    animation: twinkle 2.2s ease-in-out infinite;
+  }
+  .light .bulb-halo {
+    opacity: 0.35;
+  }
+
+  /* ===== TOP BAR · WASHI TAPE ===== */
+  .topbar {
+    position: fixed;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-0.4deg);
+    z-index: 100;
+    padding: 14px 40px;
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 94%;
+    overflow-x: auto;
+    color: var(--ink);
+    /* Washi tape base — light mint, a softer vibe than the hot pink */
+    background-color: #D4E6CF;
+    background-image:
+      repeating-linear-gradient(48deg, rgba(255,255,255,0.38) 0 7px, transparent 7px 14px),
+      repeating-linear-gradient(-48deg, rgba(0,0,0,0.04) 0 7px, transparent 7px 14px),
+      linear-gradient(180deg, rgba(255,255,255,0.4), rgba(0,0,0,0.04));
+    box-shadow:
+      0 3px 8px rgba(0,0,0,0.12),
+      inset 0 -2px 3px rgba(0,0,0,0.06);
+    /* Slight translucency like real washi */
+    opacity: 0.96;
+  }
+  /* Torn/feathered edges */
+  .topbar::before,
+  .topbar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    background: inherit;
+    background-color: #D4E6CF;
+    background-image:
+      repeating-linear-gradient(48deg, rgba(255,255,255,0.38) 0 7px, transparent 7px 14px),
+      linear-gradient(180deg, rgba(255,255,255,0.4), rgba(0,0,0,0.04));
+  }
+  .topbar::before {
+    left: -6px;
+    clip-path: polygon(0 8%, 100% 0, 60% 25%, 100% 40%, 40% 55%, 100% 70%, 55% 85%, 100% 100%, 0 92%);
+  }
+  .topbar::after {
+    right: -6px;
+    clip-path: polygon(100% 8%, 0 0, 40% 25%, 0 40%, 60% 55%, 0 70%, 45% 85%, 0 100%, 100% 92%);
+  }
+  .topbar a {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s, transform 0.2s;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+    letter-spacing: 0.01em;
+  }
+  .topbar a:hover {
+    color: var(--paper);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    transform: rotate(-2deg) scale(1.08);
+  }
+  .topbar .divider {
+    color: var(--ink);
+    opacity: 0.35;
+    position: relative;
+    z-index: 2;
+    font-family: 'Fraunces', serif;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    padding: 140px 40px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    min-height: max(780px, calc(100vh - 200px));
+  }
+
+  /* ===== HERO GRID ===== */
+  /* Two-column anchored layout:
+     LEFT: polaroid + contact pill (identity)
+     RIGHT: name → tagline → sticky → scroll hint (story)
+  */
+
+  /* Hero Polaroid — anchors left column */
+  .polaroid-hero {
+    position: absolute;
+    top: 40px;
+    left: 80px;
+    width: 320px;
+    background: var(--paper);
+    padding: 14px 14px 58px;
+    box-shadow:
+      0 6px 16px rgba(0,0,0,0.18),
+      0 2px 4px rgba(0,0,0,0.1);
+    transform: rotate(-3deg);
+    transition: transform 0.4s cubic-bezier(0.3, 0, 0.2, 1), box-shadow 0.4s;
+    z-index: 5;
+  }
+  .polaroid-hero:hover {
+    transform: rotate(-1deg) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+  }
+  .polaroid-hero img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    filter: saturate(1.05) contrast(1.02);
+  }
+  .polaroid-caption {
+    font-family: 'Caveat', cursive;
+    font-size: 26px;
+    color: var(--ink);
+    text-align: center;
+    margin-top: 12px;
+    line-height: 1;
+  }
+  .polaroid-caption .heart {
+    color: var(--red);
+    display: inline-block;
+    transform: translateY(2px);
+  }
+
+  /* Name scrawl — top of right column */
+  .name-scrawl {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: clamp(88px, 11vw, 160px);
+    line-height: 0.9;
+    color: var(--ink);
+    position: absolute;
+    top: 80px;
+    left: 460px;
+    right: 280px;
+    letter-spacing: -0.02em;
+    z-index: 6;
+    pointer-events: none;
+  }
+  .name-scrawl .dot {
+    color: var(--red);
+    display: inline-block;
+    transform: translate(-8px, 10px) scale(1.3);
+  }
+  .name-scrawl .last {
+    display: block;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(36px, 4.5vw, 72px);
+    color: var(--ink-soft);
+    line-height: 1;
+    margin-top: 12px;
+    margin-left: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  /* Social doodles — hand-drawn email + linkedin under the name */
+  .socials {
+    position: absolute;
+    top: 320px;
+    left: 480px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    align-items: center;
+    z-index: 7;
+  }
+  .socials a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--ink);
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 22px;
+    transition: transform 0.25s ease, color 0.25s ease;
+    padding: 6px 4px;
+  }
+  .socials a:hover {
+    color: var(--red);
+    transform: rotate(-2deg) scale(1.06) translateY(-2px);
+  }
+  .socials .doodle-icon {
+    display: inline-block;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+  .socials a:hover .doodle-icon {
+    transform: rotate(-8deg);
+  }
+  .socials a:hover .doodle-icon path,
+  .socials a:hover .doodle-icon line,
+  .socials a:hover .doodle-icon rect,
+  .socials a:hover .doodle-icon circle {
+    stroke: var(--red);
+  }
+  .socials .label {
+    border-bottom: 2px dotted var(--ink-soft);
+    padding-bottom: 1px;
+    transition: border-color 0.25s ease;
+  }
+  .socials a:hover .label {
+    border-bottom-color: var(--red);
+  }
+
+  /* Tagline note — right column, beneath the "looking for" sticky */
+  .tagline-note {
+    position: absolute;
+    top: 380px;
+    right: 40px;
+    width: 280px;
+    background: var(--paper);
+    padding: 20px 22px 20px 28px;
+    transform: rotate(2deg);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    z-index: 7;
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.4;
+    font-style: italic;
+    color: var(--ink);
+    background-image:
+      linear-gradient(var(--rule-line) 1px, transparent 1px);
+    background-size: 100% 30px;
+    background-position: 0 36px;
+    border-left: 2px solid var(--margin-line);
+  }
+  .tagline-note em {
+    font-style: normal;
+    background: linear-gradient(transparent 55%, var(--yellow) 55%);
+    font-weight: 500;
+  }
+
+  /* Sticky note — top-right, right below fairy lights */
+  .sticky-status {
+    position: absolute;
+    top: 140px;
+    right: 40px;
+    width: 200px;
+    height: 200px;
+    background: var(--yellow);
+    background-image: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(0,0,0,0.04) 100%);
+    padding: 22px;
+    transform: rotate(4deg);
+    box-shadow:
+      0 8px 16px rgba(0,0,0,0.15),
+      inset 0 -20px 30px rgba(0,0,0,0.04);
+    font-family: 'Caveat', cursive;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 8;
+    transition: transform 0.3s;
+  }
+  .sticky-status:hover { transform: rotate(1deg) scale(1.05); }
+  .sticky-status .blink {
+    display: inline-block;
+    width: 10px; height: 10px;
+    background: var(--red);
+    border-radius: 50%;
+    margin-right: 6px;
+    animation: pulse 1.8s infinite;
+  }
+  .sticky-status .row1 {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .sticky-status .emphasis {
+    color: var(--red);
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 34px;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* TO-DO note — top-right, stacked below sticky */
+  .todo-note {
+    position: absolute;
+    top: 380px;
+    right: 40px;
+    width: 300px;
+    background: var(--paper);
+    padding: 22px 24px 22px 28px;
+    transform: rotate(2deg);
+    box-shadow: 0 5px 14px rgba(0,0,0,0.14);
+    z-index: 7;
+    color: var(--ink);
+    /* Ruled paper lines with a red margin */
+    background-image: linear-gradient(var(--rule-line) 1px, transparent 1px);
+    background-size: 100% 32px;
+    background-position: 0 54px;
+    border-left: 2px solid var(--margin-line);
+  }
+  .todo-note h4 {
+    font-family: 'Caveat', cursive;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 10px;
+    color: var(--ink);
+    position: relative;
+    display: inline-block;
+  }
+  .todo-note h4::after {
+    content: "";
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: var(--yellow);
+    z-index: -1;
+    transform: rotate(-1deg);
+  }
+  .todo-note ul { list-style: none; padding: 0; margin: 0; }
+  .todo-note li {
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .todo-note li a {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s, padding 0.25s;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .todo-note li a:hover {
+    color: var(--red);
+    padding-left: 4px;
+  }
+  .todo-note .checkbox {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--ink);
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .todo-note li:hover .checkbox {
+    background: var(--red);
+    position: relative;
+  }
+  .todo-note li:hover .checkbox::after {
+    content: "✓";
+    position: absolute;
+    top: -4px;
+    left: 1px;
+    color: var(--paper);
+    font-weight: 700;
+    font-size: 14px;
+    font-family: 'Fraunces', serif;
+  }
+
+  /* Scroll-hint — centered in the gap between photo (left) and tagline (right) */
+  .scroll-hint {
+    position: absolute;
+    top: 560px;
+    left: 580px;
+    bottom: auto;
+    transform: rotate(-3deg);
+    font-family: 'Caveat', cursive;
+    font-size: 26px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.25s ease, transform 0.25s ease;
+  }
+  .scroll-hint:hover {
+    color: var(--red);
+    transform: rotate(-1deg) scale(1.05);
+  }
+  .scroll-hint:hover .arrow-down path {
+    stroke: var(--red);
+  }
+  .scroll-hint .arrow-down {
+    display: inline-block;
+    animation: bob 1.8s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* Hand-drawn scribbles — intentional accents, not clutter */
+  .scribble {
+    position: absolute;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0.9;
+  }
+  .scribble svg { display: block; overflow: visible; }
+  .scribble path, .scribble line, .scribble circle, .scribble polyline {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .scribble.drift-1 { animation: drift1 6s ease-in-out infinite; }
+  .scribble.drift-2 { animation: drift2 7s ease-in-out infinite; }
+  @keyframes drift1 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(4px, -3px) rotate(3deg); }
+  }
+  @keyframes drift2 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-3px, 4px) rotate(-4deg); }
+  }
+
+  /* Decorative doodles */
+  .doodle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .doodle-star {
+    top: 60px;
+    left: 380px;
+    color: var(--red);
+    font-size: 32px;
+    font-family: 'Caveat', cursive;
+    animation: spinSlow 8s linear infinite;
+  }
+  @keyframes spinSlow { to { transform: rotate(360deg); } }
+  .doodle-heart {
+    top: 560px;
+    left: 500px;
+    color: var(--magenta);
+    font-size: 38px;
+  }
+
+  /* ===== SECTIONS ===== */
+  section.chapter {
+    padding: 40px 40px 100px;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .chapter-header {
+    display: flex;
+    align-items: baseline;
+    gap: 32px;
+    margin-bottom: 60px;
+    position: relative;
+  }
+  .chapter-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--red);
+    background: var(--paper);
+    padding: 6px 12px;
+    border: 1px solid var(--ink);
+    transform: rotate(-2deg);
+    flex-shrink: 0;
+  }
+  .chapter-title {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: clamp(56px, 8vw, 96px);
+    line-height: 0.95;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .chapter-title .accent { color: var(--red); }
+  .chapter-title .underline {
+    position: relative;
+    display: inline-block;
+  }
+  .chapter-title .underline::after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background: var(--yellow);
+    z-index: -1;
+    transform: rotate(-0.5deg);
+  }
+  .chapter-sub {
+    font-family: 'Architects Daughter', cursive;
+    font-size: 20px;
+    color: var(--ink-soft);
+    margin-left: auto;
+    max-width: 280px;
+    text-align: right;
+    line-height: 1.3;
+    padding-top: 8px;
+  }
+
+  /* ===== STORY (01) ===== */
+  .story-wrap {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 60px;
+    align-items: start;
+  }
+  .journal {
+    background: var(--paper);
+    padding: 48px 56px;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    transform: rotate(-0.5deg);
+    /* Non-ruled paper for cleaner mixed-size text */
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .journal::before {
+    content: "";
+    position: absolute;
+    left: 44px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--margin-line);
+  }
+  .journal p { margin-bottom: 32px; }
+  .journal p:last-child { margin-bottom: 0; }
+
+  /* Oversized greeting at the top of the blurb */
+  .journal .hi-line {
+    line-height: 1.5;
+  }
+  .journal .hi-greeting {
+    display: inline-block;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--ink);
+    margin-right: 14px;
+    transform: translateY(4px);
+  }
+  .journal .hi-greeting .blue-highlight {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    background: linear-gradient(transparent 60%, var(--blue) 60%, var(--blue) 92%, transparent 92%);
+    padding: 0 4px;
+  }
+  .journal .pronounce {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-soft);
+  }
+  .journal .highlight {
+    background: linear-gradient(transparent 55%, var(--yellow) 55%, var(--yellow) 85%, transparent 85%);
+    font-weight: 500;
+  }
+  .journal .pink-highlight {
+    background: linear-gradient(transparent 55%, var(--pink-light) 55%, var(--pink-light) 85%, transparent 85%);
+    font-weight: 500;
+  }
+  .journal .blue-highlight {
+    background: linear-gradient(transparent 55%, var(--blue) 55%, var(--blue) 85%, transparent 85%);
+    font-weight: 500;
+  }
+  .journal .signature {
+    font-family: 'Caveat', cursive;
+    font-size: 32px;
+    color: var(--ink);
+    margin-top: 40px !important;
+    line-height: 1;
+  }
+  .journal .signature small {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    display: block;
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+
+  /* Side polaroids in story */
+  .story-side {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding-top: 20px;
+  }
+  .mini-polaroid {
+    background: var(--paper);
+    padding: 10px 10px 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    position: relative;
+    transition: transform 0.35s;
+  }
+  .mini-polaroid:hover { transform: rotate(0deg) scale(1.03); }
+  .mini-polaroid .placeholder-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--pink-light) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Caveat', cursive;
+    font-size: 40px;
+    color: var(--ink);
+  }
+  .mini-polaroid-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.05) contrast(1.02);
+    transition: transform 0.5s ease, filter 0.4s ease;
+  }
+  .mini-polaroid:hover .mini-polaroid-photo {
+    transform: scale(1.04);
+  }
+  .mini-polaroid .caption {
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
+    line-height: 1;
+  }
+  .mini-polaroid.rot-1 { transform: rotate(3deg); }
+  .mini-polaroid.rot-2 { transform: rotate(-4deg); margin-left: 30px; }
+  .mini-polaroid.rot-3 { transform: rotate(2deg); margin-left: 10px; }
+
+  .mini-polaroid.rot-1 .placeholder-photo {
+    background: linear-gradient(135deg, var(--yellow) 0%, var(--red) 100%);
+  }
+  .mini-polaroid.rot-2 .placeholder-photo {
+    background: linear-gradient(135deg, var(--green) 0%, var(--blue-deep) 100%);
+  }
+  .mini-polaroid.rot-3 .placeholder-photo {
+    background: linear-gradient(135deg, var(--magenta) 0%, var(--yellow) 100%);
+  }
+
+  /* ===== EXPERIENCE (02) ===== */
+  .jobs {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .job-poster {
+    background: var(--paper);
+    padding: 36px 40px;
+    position: relative;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    transition: transform 0.35s, box-shadow 0.35s;
+  }
+  .job-poster:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+  }
+  .job-poster.rot-a { transform: rotate(-0.8deg); }
+  .job-poster.rot-a:hover { transform: rotate(-0.8deg) translateY(-4px); }
+  .job-poster.rot-b { transform: rotate(0.6deg); }
+  .job-poster.rot-b:hover { transform: rotate(0.6deg) translateY(-4px); }
+  .job-poster.rot-c { transform: rotate(-0.4deg); }
+  .job-poster.rot-c:hover { transform: rotate(-0.4deg) translateY(-4px); }
+
+  .job-top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    margin-bottom: 24px;
+    align-items: start;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed var(--ink-soft);
+  }
+  .job-role {
+    font-family: 'Instrument Serif', serif;
+    font-size: 40px;
+    line-height: 1.05;
+    font-weight: 400;
+  }
+  .job-role .italic { font-style: italic; color: var(--red); }
+  .job-meta {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1.8;
+    color: var(--ink-soft);
+  }
+  .job-meta .yr {
+    color: var(--ink);
+    background: var(--yellow);
+    padding: 4px 8px;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+  .job-bullets {
+    list-style: none;
+  }
+  .job-bullets li {
+    padding: 12px 0 12px 32px;
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    line-height: 1.55;
+    position: relative;
+    color: var(--ink);
+  }
+  .job-bullets li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    top: 13px;
+    color: var(--red);
+    font-size: 14px;
+  }
+  .job-bullets .metric {
+    background: var(--yellow);
+    padding: 1px 6px;
+    font-weight: 600;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  .job-bullets .metric.pink { background: var(--pink-light); }
+  .job-bullets .metric.blue { background: var(--blue); }
+  .job-bullets .metric.green { background: var(--green); }
+  .job-bullets strong { color: var(--ink); font-weight: 600; }
+
+  /* ===== EDUCATION (03) ===== */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .edu-paper {
+    background: var(--paper);
+    padding: 36px 40px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    position: relative;
+  }
+  .edu-paper.rot-a { transform: rotate(-1.5deg); }
+  .edu-paper.rot-b { transform: rotate(1.2deg); margin-top: 30px; }
+  .edu-school {
+    font-family: 'Instrument Serif', serif;
+    font-size: 38px;
+    line-height: 1.05;
+    margin-bottom: 6px;
+  }
+  .edu-school .italic { font-style: italic; color: var(--red); }
+  .edu-degree {
+    font-family: 'Caveat', cursive;
+    font-size: 26px;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .edu-meta {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-bottom: 16px;
+    border-bottom: 1px dashed var(--ink-soft);
+    margin-bottom: 20px;
+  }
+  .edu-list {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .edu-list strong {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    display: block;
+    margin-bottom: 6px;
+    margin-top: 16px;
+    font-weight: 700;
+  }
+  .edu-list strong:first-child { margin-top: 0; }
+
+  /* ===== PROJECTS (04) ===== */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .project-card {
+    background: var(--paper);
+    padding: 10px 10px 22px;
+    box-shadow: 0 5px 14px rgba(0,0,0,0.12);
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.3, 0, 0.2, 1), box-shadow 0.4s;
+  }
+  .project-card:hover {
+    transform: rotate(0deg) scale(1.05) translateY(-4px) !important;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+    z-index: 10;
+  }
+  .project-card.rot-a { transform: rotate(-3deg); margin-top: 8px; }
+  .project-card.rot-b { transform: rotate(2deg); margin-top: 32px; }
+  .project-card.rot-c { transform: rotate(-1.5deg); margin-top: 16px; }
+
+  .project-thumb {
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Caveat', cursive;
+    font-size: 36px;
+    text-align: center;
+    line-height: 1;
+    padding: 14px;
+    color: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  .project-thumb.t-1 {
+    background: linear-gradient(135deg, var(--pink-light) 0%, var(--magenta) 100%);
+    color: var(--paper);
+  }
+  .project-thumb.t-2 {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 100%);
+    color: var(--paper);
+  }
+  .project-thumb.t-3 {
+    background: linear-gradient(135deg, var(--yellow) 0%, var(--red) 100%);
+  }
+  .project-thumb.t-4 {
+    background: linear-gradient(135deg, var(--green) 0%, var(--blue-deep) 100%);
+    color: var(--paper);
+  }
+  /* Project thumb with a real photo */
+  .project-thumb.t-photo {
+    padding: 0;
+    background: var(--ink);
+  }
+  .project-thumb.t-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease, filter 0.4s ease;
+    filter: saturate(1.05) contrast(1.02);
+  }
+  .project-card:hover .project-thumb.t-photo img {
+    transform: scale(1.06);
+    filter: saturate(1.1) contrast(1.05);
+  }
+  .project-thumb .big-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 64px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .project-thumb div[style*="font-size: 18px"] {
+    font-size: 14px !important;
+  }
+  .project-body {
+    padding: 12px 8px 4px;
+  }
+  .project-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 20px;
+    line-height: 1.1;
+    margin-bottom: 5px;
+  }
+  .project-title .italic { font-style: italic; }
+  .project-desc {
+    font-family: 'Fraunces', serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    background: var(--wall);
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    color: var(--ink);
+  }
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--red);
+    text-decoration: none;
+    padding: 4px 10px;
+    background: var(--yellow);
+    border-radius: 4px;
+    transform: rotate(-1.5deg);
+    transition: transform 0.25s, background 0.25s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  }
+  .project-link:hover {
+    transform: rotate(1deg) scale(1.05);
+    background: var(--red);
+    color: var(--paper);
+  }
+  .project-link .arrow {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  /* "Read more" button to open deep-dive modal */
+  .project-readmore {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    margin-left: 8px;
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    background: transparent;
+    border: 1.5px dashed var(--ink);
+    border-radius: 4px;
+    padding: 4px 12px;
+    cursor: pointer;
+    transform: rotate(1deg);
+    transition: transform 0.25s, background 0.25s, color 0.25s;
+    font: inherit;
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .project-readmore:hover {
+    transform: rotate(-1deg) scale(1.05);
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .project-readmore .arrow {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  /* ===== MODAL (Project deep-dive) ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 16, 10, 0.78);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 60px 20px;
+  }
+  .modal-overlay.open {
+    display: flex;
+    animation: modalFade 0.3s ease;
+  }
+  @keyframes modalFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .modal-paper {
+    background: var(--paper);
+    width: 100%;
+    max-width: 820px;
+    padding: 56px 64px 60px;
+    position: relative;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.4);
+    transform: rotate(-0.3deg);
+    animation: modalSlide 0.4s cubic-bezier(0.2, 0.7, 0.3, 1);
+    /* Ruled paper texture */
+    background-image: linear-gradient(rgba(111, 160, 209, 0.25) 1px, transparent 1px);
+    background-size: 100% 34px;
+    background-position: 0 86px;
+    border-left: 3px solid var(--margin-line);
+  }
+  @keyframes modalSlide {
+    from { opacity: 0; transform: rotate(-0.3deg) translateY(20px) scale(0.97); }
+    to   { opacity: 1; transform: rotate(-0.3deg) translateY(0) scale(1); }
+  }
+  .modal-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    width: 40px;
+    height: 40px;
+    background: var(--red);
+    color: var(--paper);
+    border: none;
+    border-radius: 50%;
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    transition: transform 0.25s, background 0.25s;
+    line-height: 1;
+    z-index: 2;
+  }
+  .modal-close:hover {
+    transform: rotate(90deg) scale(1.1);
+    background: var(--ink);
+  }
+  .modal-eyebrow {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+  .modal-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 48px;
+    line-height: 1.05;
+    font-weight: 400;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .modal-title .italic { font-style: italic; }
+  .modal-subtitle {
+    font-family: 'Caveat', cursive;
+    font-size: 26px;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+    line-height: 1.1;
+  }
+  .modal-divider {
+    border: none;
+    border-top: 1px dashed var(--ink-soft);
+    margin: 12px 0 28px;
+  }
+  .modal-section {
+    margin-bottom: 30px;
+  }
+  .modal-section h4 {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 12px;
+    color: var(--ink);
+    position: relative;
+    display: inline-block;
+  }
+  .modal-section h4::after {
+    content: "";
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: var(--yellow);
+    z-index: -1;
+    transform: rotate(-1deg);
+  }
+  .modal-section.process h4::after { background: var(--pink-light); }
+  .modal-section.outcome h4::after { background: var(--blue); }
+  .modal-section.skills-demo h4::after { background: var(--green); }
+  .modal-section p,
+  .modal-section li {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    line-height: 34px;
+    color: var(--ink);
+  }
+  .modal-section ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .modal-section li {
+    padding-left: 22px;
+    position: relative;
+  }
+  .modal-section li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--red);
+    font-size: 12px;
+  }
+  .modal-section .metric {
+    background: var(--yellow);
+    padding: 1px 6px;
+    font-weight: 600;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  .modal-skills-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .modal-skill-chip {
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 4px 14px;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    color: var(--ink);
+    transform: rotate(-1deg);
+    transition: transform 0.25s, background 0.25s, color 0.25s;
+  }
+  .modal-skill-chip:nth-child(even) { transform: rotate(1deg); }
+  .modal-skill-chip:hover {
+    transform: rotate(0) scale(1.08);
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .modal-cta {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px dashed var(--ink-soft);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+  }
+  .modal-cta a {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 6px 16px;
+    background: var(--yellow);
+    border-radius: 4px;
+    transform: rotate(-1deg);
+    transition: transform 0.25s, background 0.25s, color 0.25s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  }
+  .modal-cta a:hover {
+    transform: rotate(1deg) scale(1.06);
+    background: var(--red);
+    color: var(--paper);
+  }
+  .modal-cta a:nth-child(2) {
+    background: var(--blue);
+    transform: rotate(1deg);
+  }
+  .modal-cta a:nth-child(2):hover {
+    background: var(--blue-deep);
+    color: var(--paper);
+  }
+  @media (max-width: 640px) {
+    .modal-paper { padding: 40px 28px 36px; }
+    .modal-title { font-size: 36px; }
+  }
+
+  /* ===== SKILLS (05) ===== */
+  /* Subheading label inside merged toolkit section — washi tape style */
+  .cert-subheading {
+    margin-bottom: 28px;
+    margin-top: 8px;
+  }
+  .cert-subheading-label {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--ink);
+    padding: 8px 28px;
+    /* Washi tape — pink with diagonal weave */
+    background-color: #EE97AC;
+    background-image:
+      repeating-linear-gradient(48deg, rgba(255,255,255,0.38) 0 7px, transparent 7px 14px),
+      repeating-linear-gradient(-48deg, rgba(0,0,0,0.04) 0 7px, transparent 7px 14px),
+      linear-gradient(180deg, rgba(255,255,255,0.35), rgba(0,0,0,0.06));
+    transform: rotate(-2deg);
+    display: inline-block;
+    box-shadow:
+      0 3px 8px rgba(0,0,0,0.12),
+      inset 0 -2px 3px rgba(0,0,0,0.06);
+    opacity: 0.97;
+    position: relative;
+  }
+  /* Torn ends for the subheading tape */
+  .cert-subheading-label::before,
+  .cert-subheading-label::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    background-color: inherit;
+    background-image: inherit;
+  }
+  .cert-subheading-label::before {
+    left: -6px;
+    clip-path: polygon(0 8%, 100% 0, 60% 25%, 100% 40%, 40% 55%, 100% 70%, 55% 85%, 100% 100%, 0 92%);
+  }
+  .cert-subheading-label::after {
+    right: -6px;
+    clip-path: polygon(100% 8%, 0 0, 40% 25%, 0 40%, 60% 55%, 0 70%, 45% 85%, 0 100%, 100% 92%);
+  }
+  /* Skills subheading — use yellow tape instead to differentiate */
+  .cert-subheading.skills-tape .cert-subheading-label {
+    background-color: #F5D67E;
+    transform: rotate(1.5deg);
+  }
+
+  /* Collapsible toggle for the skills page — styled as a piece of washi tape */
+  .skills-toggle {
+    /* Remove default details styling */
+  }
+  .skills-toggle summary {
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 20px;
+    margin-top: 4px;
+    /* Washi tape base — soft blue weave (different from the two subheadings) */
+    background-color: #B4D2E7;
+    background-image:
+      repeating-linear-gradient(48deg, rgba(255,255,255,0.38) 0 7px, transparent 7px 14px),
+      repeating-linear-gradient(-48deg, rgba(0,0,0,0.04) 0 7px, transparent 7px 14px),
+      linear-gradient(180deg, rgba(255,255,255,0.35), rgba(0,0,0,0.06));
+    color: var(--ink);
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 17px;
+    opacity: 0.97;
+    box-shadow:
+      0 2px 6px rgba(0,0,0,0.1),
+      inset 0 -2px 3px rgba(0,0,0,0.05);
+    transform: rotate(-1.5deg);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    user-select: none;
+    position: relative;
+    border: none;
+  }
+  /* Feathered/torn ends for the small tape */
+  .skills-toggle summary::before,
+  .skills-toggle summary::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background-color: inherit;
+    background-image: inherit;
+  }
+  .skills-toggle summary::before {
+    left: -5px;
+    clip-path: polygon(0 8%, 100% 0, 60% 25%, 100% 40%, 40% 55%, 100% 70%, 55% 85%, 100% 100%, 0 92%);
+  }
+  .skills-toggle summary::after {
+    right: -5px;
+    clip-path: polygon(100% 8%, 0 0, 40% 25%, 0 40%, 60% 55%, 0 70%, 45% 85%, 0 100%, 100% 92%);
+  }
+  .skills-toggle summary::-webkit-details-marker { display: none; }
+  .skills-toggle summary:hover {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow:
+      0 4px 10px rgba(0,0,0,0.14),
+      inset 0 -2px 3px rgba(0,0,0,0.05);
+    background-color: #C5DCEB;
+  }
+  .summary-chevron {
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 2;
+    width: 16px;
+    height: 16px;
+  }
+  .summary-chevron path {
+    stroke: var(--ink);
+  }
+  /* When the details is open, flip the chevron and swap tape color */
+  .skills-toggle[open] summary {
+    background-color: #A8C29A;
+    transform: rotate(1deg);
+  }
+  .skills-toggle[open] summary:hover {
+    transform: rotate(0deg) scale(1.05);
+    background-color: #BCD2AF;
+  }
+  .skills-toggle[open] summary .summary-chevron {
+    transform: rotate(180deg);
+  }
+  .skills-toggle[open] summary .summary-text::before {
+    content: "click to collapse";
+  }
+  .skills-toggle summary .summary-text {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+  }
+  .skills-toggle[open] summary .summary-text {
+    font-size: 0;
+  }
+  .skills-toggle[open] summary .summary-text::before {
+    font-size: 17px;
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  /* Smooth slide-down when opening */
+  .skills-toggle[open] .skills-page {
+    animation: skillsSlide 0.45s cubic-bezier(0.2, 0.7, 0.3, 1);
+    margin-top: 32px;
+  }
+  @keyframes skillsSlide {
+    from { opacity: 0; transform: translateY(-12px) rotate(-0.5deg); }
+    to   { opacity: 1; transform: translateY(0) rotate(-0.5deg); }
+  }
+
+  .skills-page {
+    background: var(--paper);
+    padding: 56px 60px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+    transform: rotate(-0.5deg);
+    position: relative;
+    background-image: radial-gradient(circle, rgba(42,32,21,0.1) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: 0 0;
+  }
+  .skill-cluster {
+    margin-bottom: 40px;
+  }
+  .skill-cluster:last-child { margin-bottom: 0; }
+  .skill-cluster h3 {
+    font-family: 'Caveat', cursive;
+    font-size: 34px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--ink);
+    position: relative;
+    display: inline-block;
+  }
+  .skill-cluster h3::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: var(--yellow);
+    z-index: -1;
+    transform: rotate(-0.5deg);
+  }
+  .skill-cluster h3.pink::after { background: var(--pink-light); }
+  .skill-cluster h3.blue::after { background: var(--blue); }
+  .skill-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .chip {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    padding: 8px 18px;
+    background: var(--wall);
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    color: var(--ink);
+    cursor: default;
+    transition: transform 0.25s, background 0.25s, color 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .chip:hover {
+    background: var(--ink);
+    color: var(--paper);
+    transform: rotate(-2deg) scale(1.05);
+  }
+  .chip.star::before { content: "✦"; color: var(--red); font-size: 12px; }
+  .chip.heart::before { content: "♥"; color: var(--magenta); font-size: 13px; }
+  .chip:hover.star::before, .chip:hover.heart::before { color: var(--yellow); }
+
+  /* ===== CERTIFICATIONS (06) ===== */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .cert-badge {
+    background: var(--paper);
+    padding: 28px 24px;
+    text-align: center;
+    box-shadow: 0 5px 14px rgba(0,0,0,0.12);
+    position: relative;
+    border: 2px solid var(--ink);
+    transition: transform 0.35s, box-shadow 0.35s;
+    /* Anchor reset */
+    display: block;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .cert-badge.rot-a { transform: rotate(-2deg); }
+  .cert-badge.rot-b { transform: rotate(1.5deg); }
+  .cert-badge.rot-c { transform: rotate(-1deg); }
+  .cert-badge:hover {
+    transform: rotate(0) scale(1.05) !important;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+  }
+  .cert-badge:hover .cert-stamp {
+    background: var(--red);
+    color: var(--paper);
+    transform: rotate(0deg) scale(1.08);
+  }
+  .cert-stamp {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 16px;
+    border: 2px dashed var(--red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 36px;
+    color: var(--red);
+    transform: rotate(-8deg);
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+  .cert-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 20px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .cert-issuer {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .cert-cta {
+    display: block;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--ink-soft);
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+    color: var(--red);
+    opacity: 0.7;
+    transition: opacity 0.25s ease, color 0.25s ease;
+  }
+  .cert-badge:hover .cert-cta {
+    opacity: 1;
+    color: var(--ink);
+  }
+
+  /* ===== HOBBIES (07) ===== */
+  .hobbies-wall {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  .hobby {
+    background: var(--paper);
+    padding: 12px 12px 30px;
+    box-shadow: 0 5px 14px rgba(0,0,0,0.14);
+    transition: transform 0.3s;
+    position: relative;
+  }
+  .hobby:hover { transform: rotate(0) scale(1.05) !important; }
+  .hobby.rot-a { transform: rotate(-3deg); }
+  .hobby.rot-b { transform: rotate(2.5deg); }
+  .hobby.rot-c { transform: rotate(-1deg); }
+  .hobby.rot-d { transform: rotate(3.5deg); }
+  .hobby.span-4 { grid-column: span 4; }
+  .hobby.span-3 { grid-column: span 3; }
+  .hobby.span-5 { grid-column: span 5; }
+  .hobby.span-6 { grid-column: span 6; }
+  .hobby.span-7 { grid-column: span 7; }
+  .hobby.span-8 { grid-column: span 8; }
+  .hobby.span-12 { grid-column: span 12; }
+
+  .hobby-thumb {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--blue), var(--pink-light));
+  }
+  .hobby-thumb.wide { aspect-ratio: 5 / 4; }
+  .hobby-thumb.panoramic { aspect-ratio: 21 / 9; }
+  .hobby-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.05) contrast(1.02);
+    transition: transform 0.5s ease;
+  }
+  .hobby:hover .hobby-thumb img { transform: scale(1.05); }
+  .hobby-thumb.h-1 { background: linear-gradient(135deg, var(--pink-light), var(--magenta)); }
+  .hobby-thumb.h-2 { background: linear-gradient(135deg, var(--yellow), var(--red)); }
+  .hobby-thumb.h-3 { background: linear-gradient(135deg, var(--green), var(--blue-deep)); }
+  .hobby-thumb.h-4 { background: linear-gradient(135deg, var(--blue), var(--magenta)); }
+  .hobby-thumb.h-5 { background: linear-gradient(135deg, var(--red), var(--yellow)); }
+  .hobby-label {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    text-align: center;
+    margin-top: 10px;
+    line-height: 1.15;
+    padding: 0 8px;
+  }
+
+  /* ===== CONTACT (08) ===== */
+  .contact-letter {
+    background: var(--paper);
+    padding: 60px 80px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+    transform: rotate(-0.3deg);
+    font-family: 'Fraunces', serif;
+  }
+  .contact-letter::before {
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 120px;
+    height: 40px;
+    background: var(--red);
+    opacity: 0.85;
+    transform: rotate(-4deg);
+    mix-blend-mode: multiply;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.2) 0 6px, transparent 6px 10px);
+  }
+  .contact-letter::after {
+    content: "AIR MAIL";
+    position: absolute;
+    top: 48px;
+    left: 52px;
+    font-family: 'Courier Prime', monospace;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--paper);
+    transform: rotate(-4deg);
+  }
+  .contact-letter h2 {
+    font-family: 'Caveat', cursive;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+  .contact-letter h2 .accent { color: var(--red); }
+  .contact-letter p {
+    font-size: 18px;
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px dashed var(--ink-soft);
+  }
+  .contact-links a {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.2s, padding 0.3s;
+    border-bottom: 1px dotted var(--ink-soft);
+  }
+  .contact-links a:last-child { border-bottom: none; }
+  .contact-links a:hover {
+    color: var(--red);
+    padding-left: 12px;
+  }
+  .contact-links a span:last-child { transition: transform 0.3s; }
+  .contact-links a:hover span:last-child { transform: translateX(8px); }
+  .contact-signoff {
+    font-family: 'Caveat', cursive;
+    font-size: 38px;
+    margin-top: 40px;
+    line-height: 1;
+  }
+  .contact-signoff small {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 40px;
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: var(--ink-soft);
+    position: relative;
+    z-index: 2;
+  }
+  footer .heart { color: var(--red); display: inline-block; animation: beat 1.6s ease-in-out infinite; }
+  @keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  /* ===== REVEAL ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .hero { padding: 110px 24px 60px; }
+    .hero-inner { min-height: auto; display: flex; flex-direction: column; align-items: center; gap: 32px; }
+    .polaroid-hero, .name-scrawl, .tagline-note, .sticky-status, .socials, .scroll-hint, .doodle, .scribble {
+      position: static !important;
+      transform: none !important;
+      margin: 0 auto !important;
+    }
+    .polaroid-hero { width: 85%; max-width: 340px; transform: rotate(-3deg) !important; }
+    .name-scrawl { text-align: center; font-size: clamp(80px, 22vw, 160px); }
+    .tagline-note { width: 100%; max-width: 400px; transform: rotate(2deg) !important; }
+    .sticky-status { margin: 0 auto !important; }
+    .doodle { display: none; }
+    .topbar { font-size: 15px; padding: 8px 14px; gap: 14px; top: 10px; }
+    section.chapter { padding: 70px 20px; }
+    .chapter-header { flex-direction: column; gap: 16px; }
+    .chapter-sub { margin-left: 0; text-align: left; max-width: none; }
+    .story-wrap, .edu-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr 1fr; }
+    .hobbies-wall { grid-template-columns: repeat(6, 1fr); }
+    .hobby.span-3, .hobby.span-4, .hobby.span-5, .hobby.span-7, .hobby.span-8 { grid-column: span 3; }
+    .hobby.span-12 { grid-column: span 6; }
+    .journal, .skills-page { padding: 32px 28px; }
+    .contact-letter { padding: 36px 28px; }
+    .contact-letter h2 { font-size: 52px; }
+    .job-top { grid-template-columns: 1fr; }
+    .job-meta { text-align: left; }
+    .story-side { flex-direction: row; flex-wrap: wrap; }
+    .story-side .mini-polaroid { flex: 1 1 45%; }
+  }
+
+  @media (max-width: 520px) {
+    .cert-grid { grid-template-columns: 1fr; }
+    .hobbies-wall { grid-template-columns: repeat(2, 1fr); }
+    .hobby.span-3, .hobby.span-4, .hobby.span-5, .hobby.span-7, .hobby.span-8 { grid-column: span 1; }
+    .hobby.span-12 { grid-column: span 2; }
+    .chapter-title { font-size: 48px; }
+    .name-scrawl { font-size: 96px; }
+    .job-role { font-size: 28px; }
+    .edu-school { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="topbar">
+  <a href="#story">story</a>
+  <span class="divider">·</span>
+  <a href="#projects">projects</a>
+  <span class="divider">·</span>
+  <a href="#work">work</a>
+  <span class="divider">·</span>
+  <a href="#education">edu</a>
+  <span class="divider">·</span>
+  <a href="#skills">toolkit</a>
+  <span class="divider">·</span>
+  <a href="#hobbies">off-hours</a>
+  <span class="divider">·</span>
+  <a href="#contact">say hi</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <!-- Fairy lights -->
+  <div class="fairy-lights">
+    <svg viewBox="0 0 1400 160" preserveAspectRatio="none">
+      <defs>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="4" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <!-- Wire — gentle catenary droop -->
+      <path d="M0,40 Q700,105 1400,55" fill="none" stroke="#2A2015" stroke-width="1.8" opacity="0.75"/>
+      <!-- Bulbs hanging just below wire -->
+      <g class="light" style="color: #FCE17A; animation-delay: 0s;">
+        <circle class="bulb-halo" cx="120" cy="63" r="18" fill="currentColor" filter="url(#glow)"/>
+        <line x1="120" y1="51" x2="120" y2="55" stroke="#2A2015" stroke-width="1.8"/>
+        <circle cx="120" cy="63" r="8" fill="currentColor" stroke="#2A2015" stroke-width="1"/>
+      </g>
+      <g class="light" style="color: #EE97AC; animation-delay: 0.3s;">
+        <circle class="bulb-halo" cx="260" cy="74" r="18" fill="currentColor" filter="url(#glow)"/>
+        <line x1="260" y1="62" x2="260" y2="66" stroke="#2A2015" stroke-width="1.8"/>
+        <circle cx="260" cy="74" r="8" fill="currentColor" stroke="#2A2015" stroke-width="1"/>
+      </g>
+      <g class="light" style="color: #B4D2E7; animation-delay: 0.6s;">
+        <circle class="bulb-halo" cx="400" cy="82" r="18" fill="currentColor" filter="url(#glow)"/>
+        <line x1="400" y1="70" x2="400" y2="74" stroke="#2A2015" stroke-width="1.8"/>
+        <circle cx="400" cy="82" r="8" fill="currentColor" stroke="#2A2015" stroke-width="1"/>
+      </g>
+      <g class="light" style="color: #A8C29A; animation-delay: 0.9s;">
+        <circle class="bulb-halo" cx="540" cy="87" r="18" fill="currentColor" filter="url(#glow)"/>
+        <line x1="540" y1="75" x2="540" y2="79" stroke="#2A2015" stroke-width="1.8"/>
+        <circle cx="540" cy="87" r="8" fill="currentColor" stroke="#2A2015" stroke-width="1"/>
+      </g>
+      <g class="light" style="color: #D94B3A; animation-delay: 1.2s;">
+        <circle class="bulb-halo" cx="700" cy="91" r="18" fill="currentColor" filter="url(#glow)"/>
+        <line x1="700" y1="79" x2="700" y2="83" stroke="#2A2015" stroke-width="1.8"/>
+        <circle cx="700" cy="91" r="8" fill="currentColor" stroke="#2A2015" stroke-width="1"/>
+      </g>
+      <g class="light" style="color: #FCE17A; animation-delay: 0.15s;">
+        <circle class="bulb-halo" cx="860" cy="91" r="18" fill="currentColor" filter="url(#glow)"/>
+        <line x1="860" y1="79" x2="860" y2="83" stroke="#2A2015" stroke-width="1.8"/>
+        <circle cx="860" cy="91" r="8" fill="currentColor" stroke="#2A2015" stroke-width="1"/>
+      </g>
+      <g class="light" style="color: #C75D8C; animation-delay: 0.45s;">
+        <circle class="bulb-halo" cx="1000" cy="88" r="18" fill="currentColor" filter="url(#glow)"/>
+        <line x1="1000" y1="76" x2="1000" y2="80" stroke="#2A2015" stroke-width="1.8"/>
+        <circle cx="1000" cy="88" r="8" fill="currentColor" stroke="#2A2015" stroke-width="1"/>
+      </g>
+      <g class="light" style="color: #B4D2E7; animation-delay: 0.75s;">
+        <circle class="bulb-halo" cx="1140" cy="83" r="18" fill="currentColor" filter="url(#glow)"/>
+        <line x1="1140" y1="71" x2="1140" y2="75" stroke="#2A2015" stroke-width="1.8"/>
+        <circle cx="1140" cy="83" r="8" fill="currentColor" stroke="#2A2015" stroke-width="1"/>
+      </g>
+      <g class="light" style="color: #A8C29A; animation-delay: 1.05s;">
+        <circle class="bulb-halo" cx="1280" cy="75" r="18" fill="currentColor" filter="url(#glow)"/>
+        <line x1="1280" y1="63" x2="1280" y2="67" stroke="#2A2015" stroke-width="1.8"/>
+        <circle cx="1280" cy="75" r="8" fill="currentColor" stroke="#2A2015" stroke-width="1"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <!-- THE POLAROID -->
+    <div class="polaroid-hero">
+      <div class="tape pink-light" style="top: -10px; left: 50%; transform: translateX(-50%) rotate(-3deg); width: 110px;"></div>
+      <img src="ovee-dartmouth.jpg" alt="Ovee Jawdekar at Dartmouth" />
+      <div class="polaroid-caption">dartmouth diaries <span class="heart">♥</span></div>
+    </div>
+
+    <!-- NAME -->
+    <h1 class="name-scrawl">
+      ovee
+      <span class="last">jawdekar</span>
+    </h1>
+
+    <!-- SOCIALS — doodle icons under the name -->
+    <div class="socials">
+      <a href="mailto:ovee.ashwin.jawdekar.th@dartmouth.edu" aria-label="email ovee">
+        <svg class="doodle-icon" width="44" height="34" viewBox="0 0 44 34" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <!-- envelope body -->
+          <rect x="3" y="5" width="38" height="26" rx="2" stroke="#2A2015" stroke-width="2.2" stroke-linejoin="round"/>
+          <!-- envelope flap -->
+          <path d="M3 6.5 L22 20 L41 6.5" stroke="#2A2015" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- decorative wax seal dot -->
+          <circle cx="34" cy="24" r="2.6" fill="#D94B3A" stroke="#2A2015" stroke-width="1"/>
+        </svg>
+        <span class="label">say hello</span>
+      </a>
+
+      <a href="https://www.linkedin.com/in/ovee-jawdekar/" target="_blank" rel="noopener" aria-label="linkedin">
+        <svg class="doodle-icon" width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <!-- rounded square frame -->
+          <rect x="3" y="3" width="30" height="30" rx="5" stroke="#2A2015" stroke-width="2.2" stroke-linejoin="round"/>
+          <!-- the 'i' dot -->
+          <circle cx="11" cy="11" r="2.2" fill="#2A2015"/>
+          <!-- the 'i' stem -->
+          <line x1="11" y1="16" x2="11" y2="27" stroke="#2A2015" stroke-width="2.4" stroke-linecap="round"/>
+          <!-- the 'n' -->
+          <path d="M17 27 L17 16 M17 19 Q19 16 22 16 Q26 16 26 20 L26 27" stroke="#2A2015" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span class="label">on linkedin</span>
+      </a>
+
+      <a href="https://jawdekarovee.medium.com/" target="_blank" rel="noopener" aria-label="medium" style="flex-basis: 100%; margin-top: -4px;">
+        <svg class="doodle-icon" width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <!-- rounded square frame -->
+          <rect x="3" y="3" width="30" height="30" rx="5" stroke="#2A2015" stroke-width="2.2" stroke-linejoin="round"/>
+          <!-- the 'M' letterform -->
+          <path d="M9 26 L9 11 L18 22 L27 11 L27 26" stroke="#2A2015" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span class="label">sometimes i write</span>
+      </a>
+    </div>
+
+    <!-- TAGLINE -->
+    <div class="tagline-note">
+      <em>product-oriented</em><br>with a creative heart.
+    </div>
+
+    <!-- STICKY STATUS -->
+    <div class="sticky-status">
+      <div class="pin large blue" style="top: -10px; left: 50%; transform: translateX(-50%);"></div>
+      <span class="row1"><span class="blink"></span>looking for</span>
+      a role in<br>
+      <span class="emphasis">Product <br> TPM <br> Project</span>
+    </div>
+
+    <!-- SCROLL HINT -->
+    <a class="scroll-hint" href="#story">
+      scroll for the rest
+      <svg class="arrow-down" width="22" height="28" viewBox="0 0 22 28" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <path d="M11 3 L11 23 M3 16 L11 24 L19 16" stroke="#D94B3A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <!-- PURPOSEFUL SCRIBBLES — stars on the left, star by the post-it, star by the tagline -->
+
+    <!-- Star beside the looking-for post-it -->
+    <div class="scribble drift-1" style="top: 110px; right: 250px; z-index: 9;">
+      <svg width="50" height="50" viewBox="0 0 50 50">
+        <path d="M25,4 L31,18 L46,20 L34,30 L37,46 L25,37 L13,46 L16,30 L4,20 L19,18 Z"
+              stroke="#2D5A3F" stroke-width="2.8" fill="#4A7C59" fill-opacity="0.6" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <!-- Star to the right of the "code, context.." tagline note -->
+    <div class="scribble drift-2" style="top: 395px; right: 0px; z-index: 9;">
+      <svg width="46" height="46" viewBox="0 0 46 46">
+        <path d="M23,4 L29,17 L43,19 L32,28 L35,42 L23,34 L11,42 L14,28 L3,19 L17,17 Z"
+              stroke="#2D5A3F" stroke-width="2.6" fill="#4A7C59" fill-opacity="0.6" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <!-- LEFT edge: big hand-drawn star (top) -->
+    <div class="scribble drift-1" style="top: 60px; left: 6px; z-index: 6;">
+      <svg width="68" height="68" viewBox="0 0 68 68">
+        <path d="M34,5 L41,25 L63,28 L47,42 L51,64 L34,53 L17,64 L21,42 L5,28 L27,25 Z"
+              stroke="#2D5A3F" stroke-width="2.8" fill="#4A7C59" fill-opacity="0.55" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <!-- LEFT edge: medium star (middle) -->
+    <div class="scribble drift-2" style="top: 340px; left: 16px; z-index: 6;">
+      <svg width="54" height="54" viewBox="0 0 54 54">
+        <path d="M27,4 L33,20 L50,22 L37,33 L40,50 L27,41 L14,50 L17,33 L4,22 L21,20 Z"
+              stroke="#2D5A3F" stroke-width="2.8" fill="#4A7C59" fill-opacity="0.55" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <!-- LEFT edge: small star (bottom) -->
+    <div class="scribble drift-1" style="top: 580px; left: 24px; z-index: 6;">
+      <svg width="44" height="44" viewBox="0 0 44 44">
+        <path d="M22,4 L27,16 L40,18 L30,27 L33,40 L22,33 L11,40 L14,27 L4,18 L17,16 Z"
+              stroke="#D94B3A" stroke-width="2.5" fill="#EE97AC" fill-opacity="0.5" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <!-- Wavy underline removed -->
+
+  </div>
+</header>
+
+<!-- 01 STORY -->
+<section class="chapter" id="story">
+  <div class="chapter-header">
+    <div class="chapter-num">01 · the story</div>
+    <h2 class="chapter-title">a <span class="underline">blurb</span> <span class="accent">about me</span></h2>
+    <div class="chapter-sub">the short version of a longer <br>arc, written down, for once.</div>
+  </div>
+
+  <div class="story-wrap">
+    <div class="journal reveal">
+      <p class="hi-line"><span class="hi-greeting">Hi, I'm <span class="blue-highlight">Ovee</span></span> <span class="pronounce">(pronounced: ‘O’ as in “omg” + ‘vee’)</span>,<br><br>a <span class="pink-highlight">Software Engineer-turned-Product Manager</span>. For the last 2 years, I have been writing code at TCS. That job taught me the thing most tutorials can't: <strong>the gap between what a business wants and what an engineer ships is the most interesting place to stand.</strong> I kept wanting to be on the side of the decision, not just the delivery.
+      </p>
+
+      <p>I opted for an <span class="pink-highlight">Engineering Management degree</span> at Dartmouth to choose a discipline that walks the line between an entirely technical CS degree and a purely business-oriented MBA.
+      </p>
+      
+
+      <p>Outside the world of product strategy, I’m still deeply committed to my other <span class="blue-highlight">long-term passions</span>; books and dance have had me in a chokehold for years. Lately, I’ve added crocheting to the mix (yes, I contain multitudes) and developed a not-so-casual relationship with coffee. At my core, though, I’ve always been creatively inclined, and if there’s an opportunity for a pun, I will absolutely <span class="pink-highlight">seize the word.</span></p>
+
+      <p class="signature">— ovee <small>last edited · this week</small></p>
+    </div>
+
+    <div class="story-side">
+      <div class="mini-polaroid rot-1 reveal">
+        <img class="mini-polaroid-photo" src="coffee.jpeg" alt="latte at Ralph's Coffee with white roses" />
+        <div class="caption">coffee</div>
+      </div>
+      <div class="mini-polaroid rot-2 reveal">
+        <img class="mini-polaroid-photo" src="snow.jpeg" alt="Ovee in the snow at Dartmouth campus" />
+        <div class="caption">winter at dartmouth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PROJECTS -->
+<section class="chapter" id="projects">
+  <div class="chapter-header">
+    <div class="chapter-num">02 · things i've built</div>
+    <h2 class="chapter-title">selected <span class="underline accent">projects</span></h2>
+    <div class="chapter-sub">pinned on the wall for when<br>i need a reminder that i make things.</div>
+  </div>
+
+  <div class="projects-grid">
+    <!-- SYLLABIT -->
+    <div class="project-card rot-b reveal">
+      <div class="pin blue" style="top: -6px; left: 50%; transform: translateX(-50%);"></div>
+      <div class="project-thumb t-photo">
+        <img src="syllabit.jpeg" alt="SyllaBit team at Dartmouth holding their banner" />
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">SyllaBit · <span class="italic">ADHD learning</span></h3>
+        <p class="project-desc">Winners of the JHPMC Product Hackathon 2026 (team of 5, Dartmouth MEM). Adaptive platform that breaks university syllabi into ADHD-optimised micro-tasks. Working prototype shipped during the hackathon.</p>
+        <div class="project-tags">
+          <span class="tag"> Rapid Prototyping</span><span class="tag">PRD</span><span class="tag">Pitchdeck</span>
+        </div>
+        <a class="project-link" href="https://syllabit-spark.lovable.app" target="_blank" rel="noopener">live demo <span class="arrow">↗</span></a>
+        <button class="project-readmore" data-modal="syllabit" type="button">read more <span class="arrow">→</span></button>
+      </div>
+    </div>
+
+
+    <!-- RUBRIK -->
+    <div class="project-card rot-a reveal">
+      <div class="pin" style="top: -6px; left: 50%; transform: translateX(-50%);"></div>
+      <div class="project-thumb t-1">
+        <div>
+          <div class="big-num">–80%</div>
+          <div style="font-size: 18px; margin-top: 6px;">target: billing disputes</div>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Rubrik · <span class="italic">MSP billing layer</span></h3>
+        <p class="project-desc">PM case study: a native commercial layer in Rubrik Security Cloud that auto-reconciles MSP billing across 50+ end-customers. Dual-persona analysis, 3-phase MVP, shipped KPI tree.</p>
+        <div class="project-tags">
+          <span class="tag">Product Strategy</span><span class="tag">Case Study</span><span class="tag">B2B SaaS</span>
+        </div>
+        <a class="project-link" href="https://rubrik-product-strategy-ovee.lovable.app/" target="_blank" rel="noopener">live prototype <span class="arrow">↗</span></a>
+        <button class="project-readmore" data-modal="rubrik" type="button">read more <span class="arrow">→</span></button>
+      </div>
+    </div>
+
+
+    <!-- HYPERTHERM (was Canvas position) -->
+    <div class="project-card rot-c reveal">
+      <div class="pin yellow" style="top: -6px; left: 50%; transform: translateX(-50%);"></div>
+      <div class="project-thumb t-photo">
+        <img src="hypertherm.jpeg" alt="Hypertherm Dartmouth team at the Engineering pinning event" />
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Hypertherm · <span class="italic">AI roadmap</span></h3>
+        <p class="project-desc">Dartmouth technology assessment for Hypertherm Associates: weighted platform evaluation, use-case prioritization, and a three-phase agentic-AI roadmap projected to deliver a 3:1 benefit-to-cost ratio.</p>
+        <div class="project-tags">
+          <span class="tag">Product Strategy</span><span class="tag">n8n</span><span class="tag">Roadmap</span><span class="tag">Enterprise</span>
+        </div>
+        <button class="project-readmore" data-modal="hypertherm" type="button">read more <span class="arrow">→</span></button>
+      </div>
+    </div>
+
+    <!-- DALI CANVAS (was Hypertherm position) -->
+    <div class="project-card rot-a reveal">
+      <div class="pin green" style="top: -6px; left: 50%; transform: translateX(-50%);"></div>
+      <div class="project-thumb t-2">
+        <div>
+          <div class="big-num">3</div>
+          <div style="font-size: 18px; margin-top: 6px;">personas, one broken LMS</div>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Case Study · <span class="italic">Canvas MVP</span></h3>
+        <p class="project-desc">Reimagined Canvas navigation with subject-wise to-do lists and an in-app chatbot. Primary user research, RICE + MoSCoW prioritization, 10-week phased roadmap.</p>
+        <div class="project-tags">
+          <span class="tag">User Research</span><span class="tag">RICE/MoSCoW</span><span class="tag">MVP</span>
+        </div>
+        <button class="project-readmore" data-modal="canvas" type="button">read more <span class="arrow">→</span></button>
+      </div>
+    </div>
+
+    <!-- BREAST CANCER -->
+    <div class="project-card rot-b reveal">
+      <div class="pin" style="top: -6px; left: 50%; transform: translateX(-50%);"></div>
+      <div class="project-thumb t-photo">
+        <img src="bcc.png" alt="Histopathological imagery showing benign and malignant breast tissue samples" />
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Breast cancer · <span class="italic">classifier</span></h3>
+        <p class="project-desc">End-to-end CNN that detects malignancy in carcinoma images. Defined project vision, milestones, and led the model build through training and evaluation.</p>
+        <div class="project-tags">
+          <span class="tag">NumPy</span><span class="tag">OpenCV</span><span class="tag">Keras</span><span class="tag">Deep Learning</span>
+        </div>
+        <button class="project-readmore" data-modal="breastcancer" type="button">read more <span class="arrow">→</span></button>
+      </div>
+    </div>
+
+    <!-- CLINIMAP -->
+    <div class="project-card rot-c reveal">
+      <div class="pin blue" style="top: -6px; left: 50%; transform: translateX(-50%);"></div>
+      <div class="project-thumb t-3">
+        <div>
+          <div class="big-num">–50%</div>
+          <div style="font-size: 18px; margin-top: 6px;">patient wait times</div>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Clinimap</h3>
+        <p class="project-desc">Healthcare SaaS portal with an automated patient-to-specialist matching system. Market insights, customer-need definition, and end-to-end engineering.</p>
+        <div class="project-tags">
+          <span class="tag">MongoDB</span><span class="tag">React</span><span class="tag">Node</span><span class="tag">EJS</span>
+        </div>
+        <button class="project-readmore" data-modal="clinimap" type="button">read more <span class="arrow">→</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 WORK -->
+<section class="chapter" id="work">
+  <div class="chapter-header">
+    <div class="chapter-num">03 · where i've built</div>
+    <h2 class="chapter-title">my <span class="underline">corporate</span> <span class="accent"> <br>journey</span> (so far)</h2>
+    <div class="chapter-sub">building and<br>measuring impact.</div>
+  </div>
+
+  <div class="jobs">
+    <!-- TCS Systems Engineer -->
+    <div class="job-poster rot-b reveal">
+      <div class="tape blue" style="top: -15px; right: 60px; width: 120px; transform: rotate(3deg);"></div>
+      <div class="pin blue" style="top: 18px; left: 18px;"></div>
+      <div class="job-top">
+        <div>
+          <div class="job-role">Systems Engineer<br><span class="italic">Tata Consultancy Services — BFSI Product Solutions</span></div>
+        </div>
+        <div class="job-meta">
+          <span class="yr">Oct 2023 — Sep 2025</span><br>
+          mumbai, india<br>
+          client: abn amro
+        </div>
+      </div>
+      <ul class="job-bullets">
+        <li>Owned the product lifecycle for <strong>investment billing modules at ABN AMRO</strong>, bridging complex pricing requirements and technical execution to deliver robust, low-latency transaction solutions.</li>
+        <li>Ran client-facing <strong>PI planning</strong> to define product strategy and roadmap milestones for upcoming releases.</li>
+        <li>Conducted performance analysis and KPI tracking using <strong>clickstream data</strong>; partnered with tech teams to redesign <span class="metric">53 UI screens</span>, reducing user errors by <span class="metric pink">45%</span>.</li>
+        <li>Defined product requirements and led client-facing delivery for a <strong>stock trading application</strong>, improving user satisfaction scores by <span class="metric blue">20%</span>.</li>
+        <li>Organized daily scrums and managed sprint cycles for a team of <strong>15 engineers</strong> across two product launches.</li>
+        <li>Identified underutilized systems and initiated a time-based decommission plan that saved <span class="metric green">$620K</span> in 2024.</li>
+      </ul>
+    </div>
+
+    <!-- TCS Intern -->
+    <div class="job-poster rot-c reveal">
+      <div class="tape green" style="top: -15px; left: 50%; width: 140px; transform: translateX(-50%) rotate(-1deg);"></div>
+      <div class="pin yellow" style="top: 18px; right: 50px;"></div>
+      <div class="job-top">
+        <div>
+          <div class="job-role">Web Development Intern<br><span class="italic">Tata Consultancy Services</span></div>
+        </div>
+        <div class="job-meta">
+          <span class="yr">Feb — Jun 2023</span><br>
+          mumbai, india
+        </div>
+      </div>
+      <ul class="job-bullets">
+        <li>Built reusable <strong>React components and API integrations</strong> for an enterprise resource management application.</li>
+        <li>Conducted user research with <span class="metric">30+ BFSI</span> hiring managers to launch an automated onboarding system, optimizing the existing process by <span class="metric pink">80%</span>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 04 EDUCATION -->
+<section class="chapter" id="education">
+  <div class="chapter-header">
+    <div class="chapter-num">04 · where i've studied</div>
+    <h2 class="chapter-title"><span class="underline">campus</span> <span class="accent"> lives</span> </h2>
+    <div class="chapter-sub">engineer first, <br>then management of engineering ! </div>
+  </div>
+
+  <div class="edu-grid">
+    <div class="edu-paper rot-a reveal">
+      <div class="tape pink-light" style="top: -15px; left: 30px; width: 110px; transform: rotate(-5deg);"></div>
+      <div class="pin" style="top: 20px; right: 20px;"></div>
+      <h3 class="edu-school">Dartmouth <span class="italic">College</span></h3>
+      <p class="edu-degree">Master of Engineering Management<br>(Product Management track)</p>
+      <div class="edu-meta">Sep 2025 — Nov 2026 · Hanover, NH</div>
+      <div class="edu-list">
+        <strong>Program</strong>
+        A collaborative program taught by the Thayer School of Engineering and the Tuck School of Business.
+        <strong>Coursework</strong>
+        Marketing · Pricing Strategy &amp; Analytics · Consumer Insights · Accounting &amp; Finance · Negotiations · Data Analytics · Technology Assessment · Operations Management
+      </div>
+    </div>
+
+    <div class="edu-paper rot-b reveal">
+      <div class="tape yellow" style="top: -15px; right: 30px; width: 110px; transform: rotate(4deg);"></div>
+      <div class="pin blue" style="top: 20px; left: 20px;"></div>
+      <h3 class="edu-school">University of <span class="italic">Mumbai</span></h3>
+      <p class="edu-degree">Bachelor of Engineering<br>(Computer Engineering)</p>
+      <div class="edu-meta">Aug 2019 — May 2023 · Mumbai, India</div>
+      <div class="edu-list">
+        <strong>Coursework</strong>
+        Applied Data Science · MIS · Machine Learning · Software Engineering
+        <strong>Leadership</strong>
+        Editor-in-Chief, Computer Society of India (2022–23)<br>
+        Social Media Head, Wall-RAIT (2021–22)
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 SKILLS -->
+<!-- 05 TOOLKIT (Certifications + Skills) -->
+<section class="chapter" id="skills">
+  <div class="chapter-header">
+    <div class="chapter-num">05 · the toolkit</div>
+    <h2 class="chapter-title">verified &amp; <span class="underline">certified</span></h2>
+    <div class="chapter-sub">stamps first, then the<br>working list of what i reach for.</div>
+  </div>
+
+  <!-- Certifications row -->
+  <div class="cert-subheading">
+    <span class="cert-subheading-label">→ certifications</span>
+  </div>
+  <div class="cert-grid" style="margin-bottom: 64px;">
+    <a class="cert-badge rot-a reveal" href="https://learn.microsoft.com/en-gb/users/oveejawdekar-9891/credentials/5a6c5b9ef6b7883e?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank" rel="noopener" aria-label="View Power BI Data Analyst Associate credential">
+      <div class="pin" style="top: -6px; left: 50%; transform: translateX(-50%);"></div>
+      <div class="cert-stamp">BI</div>
+      <h3 class="cert-name">Power BI Data Analyst Associate</h3>
+      <div class="cert-issuer">Microsoft</div>
+      <span class="cert-cta">view credential ↗</span>
+    </a>
+    <a class="cert-badge rot-b reveal" href="https://www.credly.com/badges/cadf4de2-1789-427f-a143-ec0e29070f2b/print" target="_blank" rel="noopener" aria-label="View AWS Cloud Foundations credential">
+      <div class="pin blue" style="top: -6px; left: 50%; transform: translateX(-50%);"></div>
+      <div class="cert-stamp">☁</div>
+      <h3 class="cert-name">AWS Cloud Foundations</h3>
+      <div class="cert-issuer">Amazon Web Services</div>
+      <span class="cert-cta">view credential ↗</span>
+    </a>
+    <a class="cert-badge rot-c reveal" href="https://www.credly.com/badges/d2501181-2f8d-423d-9f46-e59975fb8ab8/print" target="_blank" rel="noopener" aria-label="View AWS Cloud Architecting credential">
+      <div class="pin yellow" style="top: -6px; left: 50%; transform: translateX(-50%);"></div>
+      <div class="cert-stamp">◈</div>
+      <h3 class="cert-name">AWS Cloud Architecting</h3>
+      <div class="cert-issuer">Amazon Web Services</div>
+      <span class="cert-cta">view credential ↗</span>
+    </a>
+  </div>
+
+  <!-- Skills page (collapsible) -->
+  <div class="cert-subheading skills-tape">
+    <span class="cert-subheading-label">→ skills</span>
+  </div>
+  <details class="skills-toggle">
+    <summary>
+      <span class="summary-text">click to expand</span>
+      <svg class="summary-chevron" width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <path d="M5 8 L11 14 L17 8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </summary>
+    <div class="skills-page reveal">
+      <div class="tape pink" style="top: -15px; left: 80px; width: 130px; transform: rotate(-3deg);"></div>
+      <div class="tape yellow" style="top: -15px; right: 80px; width: 130px; transform: rotate(4deg);"></div>
+
+      <div class="skill-cluster">
+        <h3 class="pink">product</h3>
+        <div class="skill-chips">
+          <span class="chip star">Product Strategy</span>
+          <span class="chip star">Roadmapping</span>
+          <span class="chip star">User Acceptance Testing</span>
+          <span class="chip star">Customer Presentations</span>
+          <span class="chip star">Rapid Prototyping</span>
+          <span class="chip star">Product Lifecycle</span>
+          <span class="chip star">Sprint Planning</span>
+          <span class="chip star">Go-to-Market Strategy</span>
+          <span class="chip star">OKR Definition</span>
+          <span class="chip star">KPI Integration</span>
+        </div>
+      </div>
+
+      <div class="skill-cluster">
+        <h3>technical</h3>
+        <div class="skill-chips">
+          <span class="chip">Python</span>
+          <span class="chip">R</span>
+          <span class="chip">SQL</span>
+          <span class="chip">MongoDB</span>
+          <span class="chip">Tableau</span>
+          <span class="chip">Git</span>
+          <span class="chip">React</span>
+          <span class="chip">Node</span>
+          <span class="chip">Java</span>
+        </div>
+      </div>
+
+      <div class="skill-cluster">
+        <h3 class="blue">agile &amp; tools</h3>
+        <div class="skill-chips">
+          <span class="chip">Azure Boards</span>
+          <span class="chip">Jira</span>
+          <span class="chip">Confluence</span>
+          <span class="chip">Trello</span>
+          <span class="chip">Figma</span>
+          <span class="chip">Framer</span>
+          <span class="chip">Canva</span>
+          <span class="chip">Google Suite</span>
+          <span class="chip">Microsoft Office Suite</span>
+        </div>
+      </div>
+
+      <div class="skill-cluster">
+        <h3 class="pink">GenAI &amp; automation</h3>
+        <div class="skill-chips">
+          <span class="chip heart">Cursor</span>
+          <span class="chip heart">Lovable</span>
+          <span class="chip heart">Claude Code</span>
+          <span class="chip heart">NotebookLM</span>
+          <span class="chip heart">n8n</span>
+          <span class="chip heart">Vercel</span>
+        </div>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- 07 HOBBIES -->
+<section class="chapter" id="hobbies">
+  <div class="chapter-header">
+    <div class="chapter-num">06 · off-hours</div>
+    <h2 class="chapter-title">things that <span class="underline">recharge</span> me</h2>
+    <div class="chapter-sub">the things i make<br>time for outside of work.</div>
+  </div>
+
+  <div class="hobbies-wall">
+    <div class="hobby rot-a span-4 reveal">
+      <div class="pin" style="top: -6px; left: 30px;"></div>
+      <div class="hobby-thumb">
+        <img src="books.jpeg" alt="reading at a cafe" />
+      </div>
+      <div class="hobby-label">getting lost in books</div>
+    </div>
+    <div class="hobby rot-c span-4 reveal">
+      <div class="pin green" style="top: -6px; right: 20px;"></div>
+      <div class="hobby-thumb">
+        <img src="cat.jpeg" alt="cat in a sunbeam" />
+      </div>
+      <div class="hobby-label">lover of cats. Meet mine, Ego</div>
+    </div>
+    <div class="hobby rot-b span-4 reveal">
+      <div class="pin blue" style="top: -6px; left: 50%; transform: translateX(-50%);"></div>
+      <div class="hobby-thumb">
+        <img src="dance.jpeg" alt="Ovee performing classical Indian dance" />
+      </div>
+      <div class="hobby-label">fully-certified Indian classical dancer. Dance form: Kathak</div>
+    </div>
+    <div class="hobby rot-d span-6 reveal">
+      <div class="pin yellow" style="top: -6px; left: 30px;"></div>
+      <div class="hobby-thumb wide">
+        <img src="travel.jpeg" alt="Chicago skyline at dusk" />
+      </div>
+      <div class="hobby-label">travel enthusiast, nowadays living vicariously through others (brownie points if you guess the city behind me)</div>
+    </div>
+    <div class="hobby rot-a span-6 reveal">
+      <div class="pin" style="top: -6px; right: 20px;"></div>
+      <div class="hobby-thumb wide">
+        <img src="music.jpeg" alt="stadium concert lights" />
+      </div>
+      <div class="hobby-label">live music nights. playlist #173 and counting on Spotify</div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 CONTACT -->
+<section class="chapter" id="contact">
+  <div class="chapter-header">
+    <div class="chapter-num">07 · say hi</div>
+    <h2 class="chapter-title">let's <span class="underline accent">build</span> something</h2>
+    <div class="chapter-sub">hiring, collaborating,<br>or just want to trade notes.</div>
+  </div>
+
+  <div class="contact-letter reveal">
+    <h2>hi, <span class="accent">it's me.</span></h2>
+    <p>if you're hiring for a Product/Program or you just want to talk, my inbox is always open. You miss 100% of the networking shots if you don't take them.</p>
+    <p>easiest way to reach me is email. i also live on Linkedin.</p>
+
+    <div class="contact-links">
+      <a href="mailto:ovee.ashwin.jawdekar.th@dartmouth.edu"><span>✉ ovee.ashwin.jawdekar.th@dartmouth.edu</span><span>→</span></a>
+      <a href="tel:+16032765644"><span>☎ +1 (603) 276-5644</span><span>→</span></a>
+      <a href="https://www.linkedin.com/in/ovee-jawdekar/" target="_blank" rel="noopener"><span>⚑ linkedin — /in/ovee-jawdekar</span><span>→</span></a>
+      <a href="https://github.com/oveee" target="_blank" rel="noopener"><span>⎇ github — /oveee</span><span>→</span></a>
+    </div>
+
+    <p class="contact-signoff">— ovee<small>hanover, nh · 2026</small></p>
+  </div>
+</section>
+
+<!-- PROJECT MODAL -->
+<div class="modal-overlay" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-paper" role="document">
+    <button class="modal-close" id="modalClose" aria-label="close">✕</button>
+    <div class="modal-eyebrow" id="modalEyebrow"></div>
+    <h2 class="modal-title" id="modalTitle"></h2>
+    <div class="modal-subtitle" id="modalSubtitle"></div>
+    <hr class="modal-divider">
+
+    <div class="modal-section problem">
+      <h4>problem</h4>
+      <div id="modalProblem"></div>
+    </div>
+
+    <div class="modal-section process">
+      <h4>process</h4>
+      <div id="modalProcess"></div>
+    </div>
+
+    <div class="modal-section outcome">
+      <h4>outcome</h4>
+      <div id="modalOutcome"></div>
+    </div>
+
+    <div class="modal-section skills-demo">
+      <h4>skills demonstrated</h4>
+      <div class="modal-skills-chips" id="modalSkills"></div>
+    </div>
+
+    <div class="modal-cta" id="modalCta"></div>
+  </div>
+</div>
+
+<footer>
+  made with <span class="heart">♥</span> in hanover · ovee's corner of the internet
+</footer>
+
+<script>
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ===== PROJECT MODAL =====
+  const PROJECT_DATA = {
+    syllabit: {
+      eyebrow: "JHPMC Product Hackathon · 2026 · Team of 5",
+      title: "SyllaBit · <em>ADHD learning</em>",
+      subtitle: "adaptive learning that breaks syllabi into ADHD-optimised micro-tasks",
+      problem: `
+        <p>An estimated <span class="metric">~15%</span> of US college students live with ADHD, yet university syllabi are still delivered as dense, multi-page documents with deadlines buried inside long prose. For ADHD learners, this means high cognitive load, missed assignments, and a constant feeling of being behind — not for lack of effort, but because the format itself is hostile to the way they process information.</p>
+        <p>We asked: what if a syllabus could meet learners where their attention actually lives — in small, focused, achievable chunks?</p>
+      `,
+      process: `
+        <ul>
+          <li>Ran user interviews with students who self-identified as having ADHD to map their actual study workflows, frustrations, and workarounds.</li>
+          <li>Drafted a one-page <strong>PRD</strong> defining the MVP scope: syllabus upload → AI-driven chunking → personalised micro-task feed with reminders.</li>
+          <li>Built a working prototype during the hackathon using <strong>GPT-4o</strong> for chunking and Lovable for rapid front-end iteration.</li>
+          <li>Produced a pitch deck framing the problem, the user, the product, and the go-to-market opportunity.</li>
+        </ul>
+      `,
+      outcome: `
+        <ul>
+          <li><strong>Winners</strong> of the JHPMC Product Hackathon 2026.</li>
+          <li>Working prototype shipped within the hackathon window — users can upload a real syllabus and see it broken into time-boxed tasks.</li>
+          <li>Validated demand: every ADHD-student tester said they would use the product in their current term.</li>
+        </ul>
+      `,
+      skills: ["Rapid Prototyping", "PRD", "Product Strategy", "User Research", "Pitchdeck", "GenAI Integration", "Team Collaboration"],
+      cta: [
+        { label: "live demo ↗", href: "https://syllabit-spark.lovable.app" }
+      ]
+    },
+
+    rubrik: {
+      eyebrow: "PM Case Study · Rubrik Security Cloud · Solo",
+      title: "Rubrik · <em>MSP billing layer</em>",
+      subtitle: "a native commercial layer that cuts MSP invoice cycle time from 15+ days to under 3",
+      problem: `
+        <p>MSPs on Rubrik's platform spend <span class="metric">15+ days</span> and <span class="metric">2-3 FTEs</span> monthly on manual billing reconciliation across 50+ end-customers. The data exists in Rubrik; the commercial intelligence around it doesn't. RevOps analysts run Excel-based reconciliation; Service Delivery Managers handle disputes with no consumption context — directly eroding the margins that determine whether MSPs scale on Rubrik or seek alternatives.</p>
+        <p>The same invoice is the bottleneck for two different people who need fundamentally different things from it: the RevOps Analyst needs it correct and defensible; the SDM needs it explainable.</p>
+      `,
+      process: `
+        <ul>
+          <li>Built two detailed personas (<strong>RevOps Analyst</strong> and <strong>Service Delivery Manager</strong>) mapping goals, workflows, pain points, and distinct north-star metrics for each.</li>
+          <li>Scoped tightly to the <strong>licensing problem</strong> and explicitly de-scoped efficiency, visibility, and isolation — each with documented rationale.</li>
+          <li>Proposed a <strong>3-phase MVP</strong>: Data Layer (months 1-3), Intelligence Layer (4-6), Integration Layer (7-12) with clear build-order justification.</li>
+          <li>Defined a full <strong>KPI tree</strong> with 6-month and 12-month targets across invoice cycle time, RevOps effort, SDM turnaround, and dispute rate.</li>
+          <li>Documented risks and validation/mitigation strategies (suggestion-mode attribution, MSP-controlled visibility, partner interviews before schema-lock).</li>
+          <li>Built an <strong>end-customer-facing consumption dashboard mockup</strong> in Lovable to make the proposal tangible.</li>
+        </ul>
+      `,
+      outcome: `
+        <ul>
+          <li>Target: invoice cycle time from <span class="metric">15-20 days → under 3 days</span>.</li>
+          <li>Target: billing dispute rate from <span class="metric">12% → less than 2%</span> at 12 months.</li>
+          <li>Target: SDM approval turnaround from <span class="metric">3-5 days → under 4 hours</span>.</li>
+          <li>Target: RevOps monthly billing effort reduced by <span class="metric">85%</span> at 12 months per 100 end-customers.</li>
+          <li>Live prototype submitted with the case study.</li>
+        </ul>
+      `,
+      skills: ["Product Strategy", "Persona Development", "MVP Scoping", "Roadmapping", "KPI Definition", "Risk Analysis", "Prototyping", "B2B SaaS"],
+      cta: [
+        { label: "live prototype ↗", href: "https://rubrik-product-strategy-ovee.lovable.app/" }
+      ]
+    },
+
+    canvas: {
+      eyebrow: "DALI Lab PM Challenge · Solo",
+      title: "Canvas LMS · <em>MVP redesign</em>",
+      subtitle: "a first-term MVP to fix Canvas navigation for students, TAs, and faculty",
+      problem: `
+        <p>Canvas users (Dartmouth's primary LMS) face high cognitive load and poor academic visibility due to fragmented task management, interface clutter, and limited support for navigation and performance interpretation. Three distinct personas — <strong>Student Sydney</strong> (senior + TA), <strong>Working William</strong> (part-time, weekend studier), <strong>Professor Peter</strong> (new to Canvas, low tech-comfort) — all struggle, but for fundamentally different reasons.</p>
+        <p>The brief asked: design a first-term MVP that improves Canvas navigation and usability — not necessarily just for students.</p>
+      `,
+      process: `
+        <ul>
+          <li>Conducted primary qualitative research: interviewed a teaching assistant and a professor, combined with firsthand student experience.</li>
+          <li>Built <strong>3 personas</strong> segmented by needs and context of use — not demographics — each with goals, pain points, behaviour, and Jobs-To-Be-Done.</li>
+          <li>Translated personas into a <strong>10-row product requirements table</strong> with evaluation method, metric, criteria, and justification for each functional requirement.</li>
+          <li>Prioritised features using <strong>RICE</strong> internally and translated outcomes into <strong>MoSCoW</strong> for release scope (Must / Should / Could).</li>
+          <li>Defined the MVP: subject-wise customisable to-do lists + an in-app navigation chatbot — explicitly leaving analytics and dashboards for future iterations.</li>
+          <li>Mapped a <strong>10-week, 5-phase roadmap</strong> with goals, tasks, and checkpoints for each phase.</li>
+        </ul>
+      `,
+      outcome: `
+        <ul>
+          <li>End-to-end MVP submission with personas, PRD, prioritisation, feature spec, and phased roadmap.</li>
+          <li>Targets defined per feature — <span class="metric">≥90%</span> task completion before deadline, <span class="metric">≥85%</span> chatbot first-response accuracy, <span class="metric">100%</span> dashboard separation between enrolled and TA'd courses.</li>
+          <li>Defined a clear v2 vision: aggregated learning-gap insights for instructors + proactive personalised study recommendations.</li>
+        </ul>
+      `,
+      skills: ["User Research", "Persona Development", "PRD", "Feature Prioritisation (RICE)", "MoSCoW", "MVP Definition", "Product Roadmapping", "Stakeholder Empathy"],
+      cta: []
+    },
+
+    hypertherm: {
+      eyebrow: "Dartmouth Tech Assessment · Hypertherm Associates · Team",
+      title: "Hypertherm · <em>agentic-AI roadmap</em>",
+      subtitle: "a three-phase agentic-AI roadmap projected at 3:1 benefit-to-cost ratio",
+      problem: `
+        <p>Hypertherm Associates, a global industrial cutting-technology manufacturer, approached Dartmouth with a question every enterprise faces today: <em>where do we actually invest in AI, and in what order?</em> The risk of choosing wrong is high — large enterprises routinely burn millions on AI initiatives that look good in slideware but never reach production or deliver measurable value.</p>
+        <p>They needed a sober, evidence-backed answer rather than a vendor pitch.</p>
+      `,
+      process: `
+        <ul>
+          <li>Ran a <strong>weighted platform evaluation</strong> across major agentic-AI vendors and frameworks, scoring each on integration cost, security posture, vendor lock-in, and fit with Hypertherm's existing stack.</li>
+          <li>Identified candidate <strong>use cases</strong> across the value chain (manufacturing ops, customer support, sales enablement, internal knowledge) and stack-ranked them by feasibility × business impact.</li>
+          <li>Prototyped a representative workflow in <strong>n8n</strong> to make the agentic concept tangible for non-technical stakeholders.</li>
+          <li>Modelled a three-phase rollout: <em>pilot → scale → embed</em>, with cost, value, and risk projections at each stage.</li>
+          <li>Stress-tested the financial model against conservative, base, and optimistic adoption curves.</li>
+        </ul>
+      `,
+      outcome: `
+        <ul>
+          <li>Delivered a <strong>three-phase agentic-AI roadmap</strong> with prioritised use cases, vendor recommendations, and clear go/no-go checkpoints.</li>
+          <li>Projected <span class="metric">$469k net value</span> at a <span class="metric">3:1 benefit-to-cost ratio</span> over the implementation horizon.</li>
+          <li>Presented findings to Hypertherm leadership; recommendations adopted as the basis for their internal AI strategy discussion.</li>
+        </ul>
+      `,
+      skills: ["Product Strategy", "Technology Assessment", "Vendor Evaluation", "Use-Case Prioritisation", "Workflow Automation (n8n)", "Financial Modelling", "Roadmapping", "Enterprise Stakeholder Communication"],
+      cta: []
+    },
+
+    breastcancer: {
+      eyebrow: "Capstone · Computer Engineering · Lead",
+      title: "Breast cancer · <em>CNN classifier</em>",
+      subtitle: "deep-learning classifier that detects malignancy from carcinoma imaging",
+      problem: `
+        <p>Manual histopathological review of breast tissue biopsies is slow, subjective, and dependent on specialist availability. False negatives at this stage cascade into delayed treatment and worse outcomes; false positives subject patients to unnecessary follow-ups and anxiety.</p>
+        <p>Could a convolutional neural network meaningfully assist pathologists by flagging malignant samples with high enough confidence to be useful as a triage tool?</p>
+      `,
+      process: `
+        <ul>
+          <li><strong>Scoped the project</strong> end-to-end: defined the problem framing, success criteria, milestones, and the line between "research curiosity" and "useful triage tool."</li>
+          <li>Built the <strong>data pipeline</strong>: image preprocessing in OpenCV (normalisation, augmentation, patch extraction) to address class imbalance in the carcinoma dataset.</li>
+          <li>Designed and trained a <strong>CNN architecture</strong> in Keras/TensorFlow with iterative tuning of depth, dropout, and learning rate.</li>
+          <li>Evaluated against held-out test data using accuracy, precision/recall, and confusion-matrix analysis — chosen specifically because raw accuracy is misleading in medical-imaging contexts.</li>
+          <li>Owned project vision and milestone tracking; led the model build through training and evaluation cycles.</li>
+        </ul>
+      `,
+      outcome: `
+        <ul>
+          <li>Achieved <span class="metric">94% detection accuracy</span> on the held-out test set.</li>
+          <li>Demonstrated viability of CNN-based triage at the proof-of-concept level, with documented next steps for clinical validation.</li>
+          <li>Project served as a hands-on grounding in productising ML — translating a model's metrics into language a non-technical clinician could reason about.</li>
+        </ul>
+      `,
+      skills: ["Project Scoping", "Computer Vision", "Deep Learning (CNN)", "Keras/TensorFlow", "OpenCV", "Model Evaluation", "Vision-to-Outcome Framing", "Team Leadership"],
+      cta: []
+    },
+
+    clinimap: {
+      eyebrow: "Healthcare SaaS · Solo · Full-stack",
+      title: "Clinimap · <em>patient-specialist matching</em>",
+      subtitle: "a healthcare portal that auto-matches patients to the right specialist",
+      problem: `
+        <p>Patients navigating fragmented healthcare systems often see the wrong specialist first — wasting time, money, and emotional energy. The result is long detours through general practice and incorrect referrals before reaching someone who can actually help. For chronic or specialist conditions, this delay materially affects outcomes.</p>
+        <p>I wanted to test whether a symptom-and-history-based matching layer, sitting above the existing clinical network, could materially shorten that first-mile path.</p>
+      `,
+      process: `
+        <ul>
+          <li>Started with <strong>market scoping</strong> and customer-need framing: which patient archetypes lose the most time today, and which would adopt a digital matching layer.</li>
+          <li>Defined the product: a SaaS portal where patients describe symptoms and history, and the system surfaces the most appropriate specialist via a rules-based matching engine.</li>
+          <li>Designed the <strong>data model</strong> in MongoDB to capture patient profiles, specialist profiles, and the mapping logic between them.</li>
+          <li>Built the <strong>full stack</strong> end-to-end: React front-end for the patient flow, Node/Express back-end for the API, EJS for admin views, and MongoDB for persistence.</li>
+          <li>Owned the project from market insight through to working deployment.</li>
+        </ul>
+      `,
+      outcome: `
+        <ul>
+          <li>Working prototype targeting a <span class="metric">~50% reduction</span> in patient wait-to-correct-specialist time vs. the GP-referral baseline.</li>
+          <li>Demonstrated full-stack product ownership — market definition → architecture → ship — in a regulated domain.</li>
+          <li>Surfaced clear next steps for clinical validation, payor partnerships, and HIPAA-grade hardening if pursued commercially.</li>
+        </ul>
+      `,
+      skills: ["Product Vision", "Market Sizing", "Customer Discovery", "Full-Stack Engineering (MERN)", "Data Modelling", "Healthcare Domain", "End-to-End Ownership"],
+      cta: []
+    }
+  };
+
+  const modal = document.getElementById('projectModal');
+  const modalEyebrow = document.getElementById('modalEyebrow');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalSubtitle = document.getElementById('modalSubtitle');
+  const modalProblem = document.getElementById('modalProblem');
+  const modalProcess = document.getElementById('modalProcess');
+  const modalOutcome = document.getElementById('modalOutcome');
+  const modalSkills = document.getElementById('modalSkills');
+  const modalCta = document.getElementById('modalCta');
+  const modalCloseBtn = document.getElementById('modalClose');
+
+  function openModal(projectId) {
+    const data = PROJECT_DATA[projectId];
+    if (!data) return;
+    modalEyebrow.textContent = data.eyebrow;
+    modalTitle.innerHTML = data.title;
+    modalSubtitle.textContent = data.subtitle;
+    modalProblem.innerHTML = data.problem;
+    modalProcess.innerHTML = data.process;
+    modalOutcome.innerHTML = data.outcome;
+    modalSkills.innerHTML = data.skills.map(s => `<span class="modal-skill-chip">${s}</span>`).join('');
+    modalCta.innerHTML = data.cta.map(c => `<a href="${c.href}" target="_blank" rel="noopener">${c.label}</a>`).join('');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.project-readmore').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openModal(btn.dataset.modal);
+    });
+  });
+
+  modalCloseBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  // Playful console message
+  console.log('%c hi :)', 'font-family: Caveat, cursive; font-size: 40px; color: #D94B3A;');
+  console.log('%c you found the console. thanks for peeking.', 'font-family: monospace; font-size: 11px; color: #2A2015;');
+  console.log('%c — ovee', 'font-family: Caveat, cursive; font-size: 20px; color: #2A2015;');
+</script>
+
+</body>
+</html>
